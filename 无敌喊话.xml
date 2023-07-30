@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="33554adb-c3ea-4e62-b176-1555114e26ce" Name="无敌" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="枪刃" Id="54e4e5b2-0759-4d9e-9958-6c55739c557f" RegularExpression="^.*?:.{8}:(?&lt;cName&gt;.*?):3F18:超火流星:">
+        <Actions>
+          <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 已开启无敌，请奶妈注意时间&lt;se.1&gt;&lt;se.2&gt;&lt;se.3&gt;" ActionType="NamedCallback">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${cName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Name="骑士" Id="ab6b514c-b927-4c42-aeea-b2f4e4ccbed1" RegularExpression="^.*?:.{8}:(?&lt;cName&gt;.*?):1E:神圣领域:">
+        <Actions>
+          <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 已开启无敌，请奶妈注意时间&lt;se.1&gt;&lt;se.2&gt;&lt;se.3&gt;" ActionType="NamedCallback">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${cName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Name="黑骑" Id="e2c9fc44-2534-46bb-8700-4bd6c16b1857" RegularExpression="^.*?:.{8}:(?&lt;cName&gt;.*?):E36:行尸走肉:">
+        <Actions>
+          <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 已开启无敌，请奶妈注意时间&lt;se.1&gt;&lt;se.2&gt;&lt;se.3&gt;" ActionType="NamedCallback">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${cName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Name="战士" Id="24af445a-43b7-4a85-a1f0-8d752f19e18b" RegularExpression="^.*?:.{8}:(?&lt;cName&gt;.*?):2B:死斗:">
+        <Actions>
+          <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 已开启无敌，请奶妈注意时间&lt;se.1&gt;&lt;se.2&gt;&lt;se.3&gt;" ActionType="NamedCallback">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${cName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
