@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TriggernometryExport PluginVersion="1.2.0.6">
+  <ExportedTrigger Enabled="true" Name="自动辛苦" Id="4b5397fd-c18e-4788-9b17-19b2ff99c9b8" RegularExpression="^.{14} Director 21:.*:40000003:00:00:00:00">
+    <Actions>
+      <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 辛苦啦哼哧~" SoundRouting="None" TTSRouting="None" ActionType="NamedCallback">
+        <Condition Enabled="false" Grouping="Or" />
+      </Action>
+    </Actions>
+    <Condition Enabled="false" Grouping="Or" />
+    <Conditions />
+  </ExportedTrigger>
+</TriggernometryExport>
