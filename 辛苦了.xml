@@ -5,7 +5,7 @@
       <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 大家辛苦了！" SoundRouting="None" TTSRouting="None" ActionType="NamedCallback" ExecutionDelayExpression="1000">
         <Condition Enabled="false" Grouping="Or" />
       </Action>
-      <Action OrderNumber="2" NamedCallbackName="command" NamedCallbackParam="/p 【旁白：就这样！艾欧泽亚的公主殿下们和她们的骑士，又一次维护了世界的和平！从此过上幸福的生活，可喜可贺！】" SoundRouting="None" TTSRouting="None" ActionType="NamedCallback" ExecutionDelayExpression="100">
+      <Action OrderNumber="2" NamedCallbackName="command" NamedCallbackParam="/p 【旁白：就这样！艾欧泽亚的公主殿下和她的骑士，又一次维护了世界的和平！从此过上幸福的生活，可喜可贺！】" SoundRouting="None" TTSRouting="None" ActionType="NamedCallback" ExecutionDelayExpression="100">
         <Condition Enabled="false" Grouping="Or" />
       </Action>
     </Actions>
