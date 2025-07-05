@@ -2,7 +2,7 @@
 <TriggernometryExport PluginVersion="1.2.0.6">
   <ExportedTrigger Enabled="true" Name="自动辛苦" Id="8bfbc852-4840-4728-9fd4-36c6c70f530e" RegularExpression="^.{14} Director 21:.*:40000003:00:00:00:00" RefirePeriodExpression="10">
     <Actions>
-      <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 大家辛苦了！" SoundRouting="None" TTSRouting="None" ActionType="NamedCallback" ExecutionDelayExpression="1000">
+      <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/p 老大辛苦了喵！今天的战斗也很精彩喵！" SoundRouting="None" TTSRouting="None" ActionType="NamedCallback" ExecutionDelayExpression="1000">
         <Condition Enabled="false" Grouping="Or" />
       </Action>
     </Actions>
