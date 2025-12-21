@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport PluginVersion="2.0.2.3">
-  <ExportedFolder Id="f8fd347b-c32b-4eea-92e2-532762fd3ff5" Enabled="true" Name="喊话宏">
+  <ExportedFolder Id="f8fd347b-c32b-4eea-92e2-532762fd3ff5" Enabled="true" Name="坠子自用喊话宏">
     <Triggers>
       <Trigger Enabled="true" Id="79760673-b373-412a-bca8-9c67092c5370" Name="赤复活喊话" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):1D63:赤复活:10[a-zA-Z0-9]{6}:(?&lt;TargetName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+)">
         <Actions>
@@ -10,9 +10,9 @@
           <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Id="7d1e0eb5-5bad-4d9c-909a-70da0c11dc3d" Name="复活喊话" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):(7D:复活|E13:生辰|AD:复生|5EDF:复苏):10[a-zA-Z0-9]{6}:(?&lt;TargetName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+)">
+      <Trigger Enabled="true" Id="7d1e0eb5-5bad-4d9c-909a-70da0c11dc3d" Name="打断技能喊话" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):(1D72:插言|1D7F:伤头):10[a-zA-Z0-9]{6}:(?&lt;TargetName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+)">
         <Actions>
-          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/p ${TargetName}，副本里不许荡秋千！！&lt;se.4&gt;【已复活→${TargetName}】" />
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/p 抱头.jpg。${TargetName}，能别说了吗！【已打断→${TargetName}】" />
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -40,6 +40,45 @@
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${cName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Id="8bfbc852-4840-4728-9fd4-36c6c70f530e" Name="自动辛苦" RegularExpression="^.{14} Director 21:.*:40000003:00:00:00:00" RefirePeriodExpression="10">
+        <Actions>
+          <Action OrderNumber="1" ActionType="NamedCallback" ExecutionDelayExpression="1000" NamedCallbackName="command" NamedCallbackParam="/p 老大辛苦了喵！今天的战斗也很精彩喵！" />
+        </Actions>
+      </Trigger>
+      <Trigger Enabled="true" Id="679351f5-5d49-492d-a011-978bb3567522" Name="舞伴" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):3E86:闭式舞姿:10[a-zA-Z0-9]{6}:(?&lt;TargetName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+)">
+        <Actions>
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/e 即将完成与${TargetName}的连接" />
+          <Action OrderNumber="2" ActionType="NamedCallback" ExecutionDelayExpression="500" NamedCallbackName="command" NamedCallbackParam="/p 终于……终于成功了！哈哈哈哈哈哈！" />
+          <Action OrderNumber="3" ActionType="NamedCallback" ExecutionDelayExpression="1000" NamedCallbackName="command" NamedCallbackParam="/p 全都归我了！我就是${TargetName}！【舞伴→${TargetName}】" />
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Id="84f0a5d4-0b95-49fe-b9db-add08a598900" Name="心关" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):5EDD:心关:10[a-zA-Z0-9]{6}:(?&lt;TargetName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+)">
+        <Actions>
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/p 关心了一下${TargetName}，反正闲着也是贤者" />
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Id="14dc7123-e8d1-4593-a63a-3443dbdd09a9" Name="复活喊话" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):(7D:复活|E13:生辰|AD:复生|5EDF:复苏):10[a-zA-Z0-9]{6}:(?&lt;TargetName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+)">
+        <Actions>
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/p ${TargetName}，副本里不许荡秋千！！&lt;se.4&gt;【已复活→${TargetName}】" />
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Id="d15759e5-d619-47b2-ab40-ea8acbc1eb6e" Name="盾姿喊话" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):(1C:钢铁信念|30:守护|E2D:深恶痛绝|3F0E:王室亲卫)">
+        <Actions>
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/p 向&lt;2&gt;以及所有无辜被打的队友说声对不起！很抱歉带来的困扰，一切因我而起，希望不要再有任何人受到伤害了。【盾姿】" />
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
       </Trigger>
     </Triggers>
