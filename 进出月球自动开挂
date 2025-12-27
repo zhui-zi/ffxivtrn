@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<TriggernometryExport PluginVersion="2.0.2.3">
+  <ExportedFolder Id="aeaabe29-d4c5-4fa0-9bdb-259d018aa675" Enabled="true" Name="月球挂机自动开关DR插件">
+    <Triggers>
+      <Trigger Enabled="true" Id="ea268930-2f3d-4e0c-a1d0-31e515333ab6" Name="离开月球" RegularExpression="^00\|[^|]+\|0001\|\|.*?已退出 ICE 适配模式\|[a-f0-9]+$" Source="FFXIVNetwork">
+        <Actions>
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr load AutoReplyChatBot" />
+          <Action OrderNumber="2" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr load AutoRefuseTrade" />
+          <Action OrderNumber="3" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/e 已关闭自动回复和自动取消交易" />
+        </Actions>
+      </Trigger>
+      <Trigger Enabled="true" Id="9d640ae8-f45d-45e2-b674-1b5f69eca977" Name="进入月球" RegularExpression="^00\|[^|]+\|0001\|\|.*?已进入 ICE 适配模式\|[a-f0-9]+$" Source="FFXIVNetwork">
+        <Actions>
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr load AutoReplyChatBot" />
+          <Action OrderNumber="2" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr load AutoRefuseTrade" />
+          <Action OrderNumber="3" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/e 已开启自动回复和自动取消交易" />
+        </Actions>
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
