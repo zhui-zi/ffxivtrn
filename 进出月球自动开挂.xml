@@ -4,8 +4,8 @@
     <Triggers>
       <Trigger Enabled="true" Id="ea268930-2f3d-4e0c-a1d0-31e515333ab6" Name="离开月球" RegularExpression="^00\|[^|]+\|0001\|\|.*?已退出 ICE 适配模式\|[a-f0-9]+$" Source="FFXIVNetwork">
         <Actions>
-          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr load AutoReplyChatBot" />
-          <Action OrderNumber="2" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr load AutoRefuseTrade" />
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr unload AutoReplyChatBot" />
+          <Action OrderNumber="2" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/pdr unload AutoRefuseTrade" />
           <Action OrderNumber="3" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/e 已关闭自动回复和自动取消交易" />
         </Actions>
       </Trigger>
