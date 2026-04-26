@@ -73,7 +73,7 @@
       </Trigger>
       <Trigger Enabled="true" Id="d15759e5-d619-47b2-ab40-ea8acbc1eb6e" Name="盾姿喊话" RegularExpression="^.{14} ActionEffect 15:10[a-zA-Z0-9]{6}:(?&lt;PlayerName&gt;[\w\u4e00-\u9fa5\uf900-\ufa2d]+):(1C:钢铁信念|30:守护|E2D:深恶痛绝|3F0E:王室亲卫)">
         <Actions>
-          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/p 全军随我冲杀蜀军阵营！直奔四轮车儿~【盾姿】" />
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="/p 全军随我冲杀蜀军阵营！直奔诸葛亮四轮车儿~【盾姿】" />
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
