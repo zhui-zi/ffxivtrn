@@ -1,100 +1,145 @@
 <?xml version="1.0"?>
-<TriggernometryExport PluginVersion="2.0.6.2">
-  <ExportedFolder Id="a18c0001-0000-4000-8000-000000000000" Enabled="true" Name="巡梦金库剧透 g18 (Codaaaaaa 卫月脚本移植)">
+<TriggernometryExport PluginVersion="1.2.0.7">
+  <ExportedFolder Id="a18c0001-0000-4000-8000-000000000000" Name="巡梦金库剧透 g18 (Codaaaaaa 卫月脚本移植)" Enabled="true">
+    <Folders />
     <Triggers>
       <!-- ================= 区域门控 + 频道设置 ================= -->
       <!-- 进入 巡梦金库(4FF/1279)：激活 + 清空缓冲。想发到小队就把下面 g18chan 的 /e 改成 /p -->
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000010" Name="进入巡梦金库" RegularExpression="(?i)^01\|[^|]*\|4ff\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="进入巡梦金库" Id="a18c0001-0000-4000-8000-000000000010" RegularExpression="(?i)^01\|[^|]*\|4ff\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18active" VariableExpression="1" />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18chan" VariableExpression="/e" />
-          <Action OrderNumber="3" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="" />
-          <Action OrderNumber="4" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18active" VariableExpression="1">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18chan" VariableExpression="/e">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="3" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="4" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
+        <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000011" Name="离开巡梦金库" RegularExpression="(?i)^01\|[^|]*\|(?!4ff\|)[^|]+\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="离开巡梦金库" Id="a18c0001-0000-4000-8000-000000000011" RegularExpression="(?i)^01\|[^|]*\|(?!4ff\|)[^|]+\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18active" VariableExpression="0" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18active" VariableExpression="0">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
+        <Condition Enabled="false" Grouping="Or" />
       </Trigger>
 
       <!-- ================= 记录：Flag=1/2 的 MapEffect(257)，按 Index 追加符号进缓冲 ================= -->
       <!-- 记录行: 257|时间|实例ID|(00020001|00040002)|Index(2位16进制)|||hash -->
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000020" Name="记录-心碎" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(00|07|0e|1b)\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="记录-心碎" Id="a18c0001-0000-4000-8000-000000000020" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(00|07|0e|1b)\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="${g18buf}心碎 " />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="${g18cnt}x" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="${g18buf}心碎 ">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="${g18cnt}x">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000021" Name="记录-小钻" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(01|06|08|0d|0f|14)\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="记录-小钻" Id="a18c0001-0000-4000-8000-000000000021" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(01|06|08|0d|0f|14)\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="${g18buf}小钻 " />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="${g18cnt}x" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="${g18buf}小钻 ">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="${g18cnt}x">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000022" Name="记录-三钻" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(02|09|10|1d)\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="记录-三钻" Id="a18c0001-0000-4000-8000-000000000022" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(02|09|10|1d)\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="${g18buf}三钻 " />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="${g18cnt}x" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="${g18buf}三钻 ">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="${g18cnt}x">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000023" Name="记录-终钻" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(03|0a|11|1c|1e)\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="记录-终钻" Id="a18c0001-0000-4000-8000-000000000023" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(03|0a|11|1c|1e)\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="${g18buf}终钻 " />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="${g18cnt}x" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="${g18buf}终钻 ">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="${g18cnt}x">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000024" Name="记录-宝箱" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(04|0b|12|1f)\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="记录-宝箱" Id="a18c0001-0000-4000-8000-000000000024" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(04|0b|12|1f)\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="${g18buf}宝箱 " />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="${g18cnt}x" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="${g18buf}宝箱 ">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="${g18cnt}x">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000025" Name="记录-彩" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(05|0c|13)\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="记录-彩" Id="a18c0001-0000-4000-8000-000000000025" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00020001|00040002)\|(05|0c|13)\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="${g18buf}彩 " />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="${g18cnt}x" />
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="${g18buf}彩 ">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="${g18cnt}x">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
 
       <!-- ================= 合并播报：启动了(273 …|019D|4|8|…) 且已攒满3个 → 一条发出并清空 ================= -->
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000040" Name="剧透合并播报" RegularExpression="(?i)^273\|[^|]*\|[^|]*\|019d\|4\|8\|0\|0\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="剧透合并播报" Id="a18c0001-0000-4000-8000-000000000040" RegularExpression="(?i)^273\|[^|]*\|[^|]*\|019d\|4\|8\|0\|0\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="${g18chan} [G18] ${g18buf}" />
-          <Action OrderNumber="2" ActionType="VariableSet" VariableOp="Set" VariableName="g18buf" VariableExpression="" />
-          <Action OrderNumber="3" ActionType="VariableSet" VariableOp="Set" VariableName="g18cnt" VariableExpression="" />
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="${g18chan} [G18] ${g18buf}">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="3" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
         <Condition Enabled="true" Grouping="And">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-          <ConditionSingle Enabled="true" ExpressionL="${g18cnt}" ExpressionTypeL="String" ExpressionR="xxx" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+          <ConditionSingle Enabled="true" ExpressionL="${g18cnt}" ExpressionTypeL="String" ExpressionR="xxx" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
 
       <!-- ================= 变动播报：Flag=64..16384 的 MapEffect(257)，Index 排除 21-26(0x15-0x1A) ================= -->
-      <Trigger Enabled="true" Id="a18c0001-0000-4000-8000-000000000030" Name="变动播报" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00800040|01000080|02000100|04000200|08000400|10000800|20001000|40002000|80004000)\|(?!1[5-9a])[0-9a-f]{2}\|" Source="FFXIVNetwork">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="变动播报" Id="a18c0001-0000-4000-8000-000000000030" RegularExpression="(?i)^257\|[^|]*\|[^|]*\|(00800040|01000080|02000100|04000200|08000400|10000800|20001000|40002000|80004000)\|(?!1[5-9a])[0-9a-f]{2}\|">
         <Actions>
-          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="${g18chan} [G18] 变动" />
+          <Action OrderNumber="1" ActionType="NamedCallback" NamedCallbackName="command" NamedCallbackParam="${g18chan} [G18] 变动">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${g18active}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualCase" />
         </Condition>
       </Trigger>
     </Triggers>
