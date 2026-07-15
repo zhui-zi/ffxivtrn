@@ -1,22 +1,38 @@
 <?xml version="1.0"?>
 <TriggernometryExport PluginVersion="1.2.0.7">
-  <ExportedFolder Id="a18c0001-0000-4000-8000-000000000000" Name="巡梦金库剧透 g18 (Codaaaaaa 卫月脚本移植)" Enabled="true">
+  <ExportedFolder Id="a18c0001-0000-4000-8000-000000000000" Name="巡梦金库剧透 g18" Enabled="true">
     <Folders />
     <Triggers>
-      <!-- ================= 区域门控 + 频道设置 ================= -->
-      <!-- 进入 巡梦金库(4FF/1279)：激活 + 清空缓冲。想发到小队就把下面 g18chan 的 /e 改成 /p -->
+      <!-- ================= 区域门控 ================= -->
       <Trigger Enabled="true" Source="FFXIVNetwork" Name="进入巡梦金库" Id="a18c0001-0000-4000-8000-000000000010" RegularExpression="(?i)^01\|[^|]*\|4ff\|">
         <Actions>
           <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18active" VariableExpression="1">
             <Condition Enabled="false" Grouping="Or" />
           </Action>
-          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18chan" VariableExpression="/e">
+          <Action OrderNumber="2" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="">
             <Condition Enabled="false" Grouping="Or" />
           </Action>
-          <Action OrderNumber="3" ActionType="Variable" VariableOp="SetString" VariableName="g18buf" VariableExpression="">
+          <Action OrderNumber="3" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="">
             <Condition Enabled="false" Grouping="Or" />
           </Action>
-          <Action OrderNumber="4" ActionType="Variable" VariableOp="SetString" VariableName="g18cnt" VariableExpression="">
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+
+      <!-- ============ 发送频道切换：下面两条只启用其中一条 ============ -->
+      <!-- 想发默语(只有自己看得到)：启用“频道-默语”，停用“频道-小队” -->
+      <!-- 想发小队(队友可见)：    启用“频道-小队”，停用“频道-默语” -->
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="频道-默语(/e)" Id="a18c0001-0000-4000-8000-000000000012" RegularExpression="(?i)^01\|[^|]*\|4ff\|">
+        <Actions>
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18chan" VariableExpression="/e">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="false" Source="FFXIVNetwork" Name="频道-小队(/p)" Id="a18c0001-0000-4000-8000-000000000013" RegularExpression="(?i)^01\|[^|]*\|4ff\|">
+        <Actions>
+          <Action OrderNumber="1" ActionType="Variable" VariableOp="SetString" VariableName="g18chan" VariableExpression="/p">
             <Condition Enabled="false" Grouping="Or" />
           </Action>
         </Actions>
